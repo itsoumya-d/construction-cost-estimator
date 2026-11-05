@@ -1,0 +1,48 @@
+Metadata-Version: 2.4
+Name: costengine
+Version: 0.1.0
+Summary: Construction cost management reference: BoQ line items, waste, margin, GST, variations, approvals and cost tracking.
+License: MIT
+Requires-Python: >=3.11
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: fastapi>=0.115
+Requires-Dist: uvicorn>=0.30
+Requires-Dist: pydantic>=2.8
+Provides-Extra: dev
+Requires-Dist: pytest>=8; extra == "dev"
+Requires-Dist: httpx>=0.27; extra == "dev"
+Dynamic: license-file
+
+# construction-cost-estimator
+
+[![ci](https://github.com/itsoumya-d/construction-cost-estimator/actions/workflows/ci.yml/badge.svg)](https://github.com/itsoumya-d/construction-cost-estimator/actions/workflows/ci.yml)
+
+A tested reference for construction cost management and quantity-surveying
+software:
+
+- Bill-of-quantities line items with quantities, unit rates and waste factors.
+- Estimate build-up: base, waste, approved variations, margin and GST.
+- Pending variations, approval thresholds and audit entries.
+- Cost tracking: budget, committed, actual, forecast at completion, variance
+  and over-budget flag.
+- FastAPI surface and synthetic demo data.
+
+This is a **reference implementation**, not a claim of production quantity
+surveying or CivCost experience. It uses synthetic rates and no live project
+data.
+
+## Run
+
+```bash
+uv venv --python 3.12
+source .venv/bin/activate
+pip install -e ".[dev]"
+pytest
+uvicorn costengine.api:app --reload
+python -m costengine.generate
+```
+
+## License
+
+MIT
